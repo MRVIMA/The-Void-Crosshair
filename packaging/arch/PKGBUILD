@@ -5,7 +5,8 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A light, Linux-native crosshair overlay for any game or screen (X11 and Wayland)"
 arch=('any')
-url="https://github.com/MRVIMA/the-void-crosshair"
+_repo=The-Void-Crosshair
+url="https://github.com/MRVIMA/$_repo"
 license=('MIT')
 depends=('python' 'pyside6' 'python-jeepney')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
@@ -16,12 +17,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 data/com.thevoid.Crosshair.desktop -t "$pkgdir/usr/share/applications"
   for f in data/icons/hicolor/*/apps/*; do

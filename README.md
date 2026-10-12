@@ -55,7 +55,7 @@ bash scripts/install-desktop.sh --appimage THE-VOID-CROSSHAIR-1.0.0-x86_64.AppIm
 ### Arch Linux / CachyOS package
 
 ```bash
-git clone https://github.com/MRVIMA/the-void-crosshair.git
+git clone https://github.com/MRVIMA/The-Void-Crosshair.git
 cd the-void-crosshair/packaging/arch
 makepkg -si
 ```
