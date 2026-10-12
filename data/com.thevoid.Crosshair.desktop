@@ -1,0 +1,27 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=THE VOID CROSSHAIR
+GenericName=Crosshair Overlay
+Comment=A light crosshair overlay for any game or screen, X11 and Wayland
+Exec=the-void-crosshair
+Icon=com.thevoid.Crosshair
+Terminal=false
+StartupNotify=false
+StartupWMClass=the-void-crosshair
+Categories=Game;Qt;
+Keywords=crosshair;reticle;overlay;fps;game;aim;
+SingleMainWindow=true
+Actions=toggle;settings;quit;
+
+[Desktop Action toggle]
+Name=Show / hide crosshair
+Exec=the-void-crosshair toggle
+
+[Desktop Action settings]
+Name=Settings
+Exec=the-void-crosshair settings
+
+[Desktop Action quit]
+Name=Quit
+Exec=the-void-crosshair quit

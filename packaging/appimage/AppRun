@@ -1,0 +1,6 @@
+#!/bin/sh
+# AppImage entry point.
+#   ./THE-VOID-CROSSHAIR.AppImage              start (or open settings if already running)
+#   ./THE-VOID-CROSSHAIR.AppImage toggle       control the running copy (see --help)
+HERE="$(dirname "$(readlink -f "$0")")"
+exec "$HERE/usr/lib/the-void-crosshair/the-void-crosshair" "$@"

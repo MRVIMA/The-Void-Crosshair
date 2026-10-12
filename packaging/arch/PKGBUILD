@@ -1,0 +1,32 @@
+# Maintainer: MRVIMA (VOIDVIMA) <thevoidofficialprivacy@gmail.com>
+# THE VOID CROSSHAIR — a THE VOID project by THE VOID PROTOCOL.
+pkgname=the-void-crosshair
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A light, Linux-native crosshair overlay for any game or screen (X11 and Wayland)"
+arch=('any')
+url="https://github.com/MRVIMA/the-void-crosshair"
+license=('MIT')
+depends=('python' 'pyside6' 'python-jeepney')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
+optdepends=('xorg-xwayland: exact centring and above-fullscreen overlay on Wayland'
+            'xdg-desktop-portal: global shortcuts (KDE Plasma 6, GNOME 48+, Hyprland)')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+# Run `updpkgsums` after publishing the v$pkgver release.
+sha256sums=('SKIP')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 data/com.thevoid.Crosshair.desktop -t "$pkgdir/usr/share/applications"
+  for f in data/icons/hicolor/*/apps/*; do
+    install -Dm644 "$f" "$pkgdir/usr/share/icons/${f#data/icons/}"
+  done
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
